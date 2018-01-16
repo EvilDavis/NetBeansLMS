@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.niit.login;
+package com.niit.register;
 
+import com.niit.login.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,11 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author BearKChan
+ * @author Bear
  */
-public class LoginServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 
-    private LoginService ls=new LoginService();
+    RegisterService registerService = new RegisterService();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,40 +34,31 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
             //1.记得先加上这行代码
             request.setCharacterEncoding("UTF-8");
-            //2.设置“记住我”功能
-            RememberUtils.remember(request, response);
-            //3.封装参数
+            //2 封装参数到User对象
             User u = new User();
-            u.setUser_email(request.getParameter("name"));
-            u.setUser_pwd(request.getParameter("password"));
-            // 4.检验输入
-            Map<String, String> errors = CheckUtils.CheckUser(u);
-            if (errors.size() > 0) {
-                //有错误，保存异常到request中，并且转发到登录页面
-                request.setAttribute("errors", errors);
-                request.getRequestDispatcher("/login.jsp").forward(request, response);//#######登陆界面
-                return;
-            }
-
-            //  5.进行登陆
-            User user = null;
+            u.setUser_name(request.getParameter("username"));
+            u.setUser_pwd(request.getParameter("userpwd"));
+            u.setUser_birth(request.getParameter("userbirth"));
+            u.setUser_gender(request.getParameter("usergender"));
+            u.setUser_phone(request.getParameter("userphone"));
+            u.setUser_phone(request.getParameter("userphone"));
+            u.setUser_email(request.getParameter("useremail"));
+            u.setUser_role(Integer.parseInt(request.getParameter("userrole")));
+            u.setUser_address(request.getParameter("useraddress"));
+            u.setUser_state(0);
+            //3 调用Service保存
             try {
-
-                //5.1调用service登录
-                user = ls.login(u);
+                registerService.register(u);
             } catch (Exception e) {
                 e.printStackTrace();
-                request.setAttribute("email", e.getMessage());
-                request.getRequestDispatcher("/login.jsp").forward(request, response);
+                request.setAttribute("error", e.getMessage());
+                request.getRequestDispatcher("/register.jsp").forward(request, response);
                 return;
             }
-            //6.登陆成功，将user保存到Session中进行存储
-            request.getSession().setAttribute("user", user);
-            //7.登陆成功跳转到相应界面
-            request.getRequestDispatcher("/home.jsp").forward(request, response);
+            //4 根据结果,跳转到对应页面
+            response.sendRedirect(request.getContextPath() + "/register_success.jsp");
 
         }
     }

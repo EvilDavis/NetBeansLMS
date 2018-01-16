@@ -35,7 +35,7 @@
                 </div>
                 <!-- 登陆注册按钮开始 -->
                 <div class="navbar-collapse collapse navbar-left mynav-fontsize">
-                    <a class="btn btn-success" style="margin-left: 10px;margin-top: 5px;" href="login.jsp">Login</a>
+                    <a class="btn btn-success" style="margin-left: 10px;margin-top: 5px;" href="login.jsp" >Login</a>
                     <a class="btn btn-primary" style="margin-left: 5px;margin-top: 5px;" href="register.jsp">Register</a>
                 </div>
                 <!-- 登陆注册按钮结束 -->

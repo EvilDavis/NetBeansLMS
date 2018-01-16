@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package com.niit.login;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import javax.servlet.http.Cookie;
@@ -18,13 +20,13 @@ public class RememberUtils {
         String name = request.getParameter("name");                    //获取用户名  
         String password = request.getParameter("password");        //获取密码  
         String remember = request.getParameter("remember");     //获取是否打钩  
-        String codeName="";  
-        try {  
-            codeName = URLEncoder.encode(name, "UTF-8");      //对输入的中文进行编码，防止乱码出现  
-        } catch (UnsupportedEncodingException e) {  
-            e.printStackTrace();  
-        }  
-        Cookie nameCookie = new Cookie("name", codeName);   
+//        String codeName="";  
+//        try {  
+//            codeName = URLEncoder.encode(name, "UTF-8");      //对输入的中文进行编码，防止乱码出现  
+//        } catch (UnsupportedEncodingException e) {  
+//            e.printStackTrace();  
+//        }  
+        Cookie nameCookie = new Cookie("name", name);   
         Cookie passwordCookie = new Cookie("password", password);   
         nameCookie.setPath(request.getContextPath()+"/");      //设置Cookie的有效路径  
         passwordCookie.setPath(request.getContextPath()+"/");//设置Cookie的有效路径  
@@ -35,8 +37,8 @@ public class RememberUtils {
             nameCookie.setMaxAge(0);  
             passwordCookie.setMaxAge(0);  
         }  
-        response.addCookie(nameCookie);  
-        response.addCookie(passwordCookie);  
+        response.addCookie(nameCookie);  //nameCookie
+        response.addCookie(passwordCookie);  //passwordCookie
     }  
     
 }

@@ -103,6 +103,9 @@
     position: absolute;
     display: block;
     left: 0;
+    margin-top: 10px;
+    height: 18px;
+    display: none;
     bottom: -25px;
     padding-left: 18px;
     background: url(../images/error.png) no-repeat left center;
@@ -169,4 +172,10 @@ margin-bottom: 30px;
     text-align: center;
     font-size: 14px;
     color: #333;
+}
+
+.remeber-me{
+    font-weight: normal;
+    margin-left: 5px;
+    margin-top: -25px;
 }

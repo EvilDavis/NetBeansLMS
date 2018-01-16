@@ -7,7 +7,6 @@ package com.niit.login;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,11 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author BearKChan
+ * @author Bear
  */
-public class LoginServlet extends HttpServlet {
+public class LogoutServlet extends HttpServlet {
 
-    private LoginService ls=new LoginService();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,41 +31,11 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-            //1.记得先加上这行代码
-            request.setCharacterEncoding("UTF-8");
-            //2.设置“记住我”功能
-            RememberUtils.remember(request, response);
-            //3.封装参数
-            User u = new User();
-            u.setUser_email(request.getParameter("name"));
-            u.setUser_pwd(request.getParameter("password"));
-            // 4.检验输入
-            Map<String, String> errors = CheckUtils.CheckUser(u);
-            if (errors.size() > 0) {
-                //有错误，保存异常到request中，并且转发到登录页面
-                request.setAttribute("errors", errors);
-                request.getRequestDispatcher("/login.jsp").forward(request, response);//#######登陆界面
-                return;
-            }
-
-            //  5.进行登陆
-            User user = null;
-            try {
-
-                //5.1调用service登录
-                user = ls.login(u);
-            } catch (Exception e) {
-                e.printStackTrace();
-                request.setAttribute("email", e.getMessage());
-                request.getRequestDispatcher("/login.jsp").forward(request, response);
-                return;
-            }
-            //6.登陆成功，将user保存到Session中进行存储
-            request.getSession().setAttribute("user", user);
-            //7.登陆成功跳转到相应界面
-            request.getRequestDispatcher("/home.jsp").forward(request, response);
-
+            /* TODO output your page here. You may use following sample code. */
+            //1.销毁session
+            request.getSession().invalidate();
+            //2.重定向到登录页面
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
         }
     }
 
