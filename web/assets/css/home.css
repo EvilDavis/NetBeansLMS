@@ -6,6 +6,15 @@
 .mynavbar {
     height: 20px;
 }
+.welcome_span {
+    color: orange;
+    margin-bottom: -15px;
+    float: left;
+    height: 50px;
+    padding: 13px 10px;
+    font-size: 18px;
+    line-height: 20px;
+}
 
 
 /* 导航栏自定义字体 */
@@ -73,8 +82,7 @@
 
 /* 首页搜索文本框样式 */
 
-
-.keybord{
+.keybord {
     border: hidden;
     outline: none;
     background: none;
@@ -84,16 +92,20 @@
     line-height: 30px;
     font-size: 18px;
 }
+
+
 /* 搜索按钮样式 */
-.searchbutton{
+
+.searchbutton {
     height: 40px;
     width: 87px;
 }
-.drop1{
+
+.drop1 {
     width: 100px;
 }
 
-.center-in-center{
+.center-in-center {
     height: 400px;
     position: absolute;
     top: 50%;
@@ -105,7 +117,7 @@
     transform: translate(-50%, -50%);
 }
 
-.page_copy{
+.page_copy {
     position: absolute;
     display: block;
     bottom: 40px;

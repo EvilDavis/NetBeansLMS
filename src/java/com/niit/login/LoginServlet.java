@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
                 user = ls.login(u);
             } catch (Exception e) {
                 e.printStackTrace();
-                request.setAttribute("email", e.getMessage());
+                request.setAttribute("loginfail", e.getMessage());
                 request.getRequestDispatcher("/login.jsp").forward(request, response);
                 return;
             }
