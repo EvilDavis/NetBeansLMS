@@ -9,7 +9,7 @@
 .welcome_span {
     color: orange;
     margin-bottom: -15px;
-    float: left;
+    /* float: left; */
     height: 50px;
     padding: 13px 10px;
     font-size: 18px;

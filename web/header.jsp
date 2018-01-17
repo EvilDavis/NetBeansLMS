@@ -39,7 +39,7 @@
                             <div class="navbar-collapse  navbar-left mynav-fontsize  " id="userinfo_nav">
                                 <span  class="welcome_span">欢迎您:</span>
                         
-                                <a class="btn btn-success" style="margin-left: 10px;margin-top: 5px;" href="userinfo.jsp">
+                                <a class="btn btn-success" style="margin-left: 10px;margin-top: 5px;" href="/NetBeansLMS/UserInfoServlet">
                                     ${sessionScope.user.user_name}
                                 </a>
                                 <a class="btn btn-primary" style="margin-left: 5px;margin-top: 5px;" href="/NetBeansLMS/LogoutServlet">退出</a>
@@ -52,10 +52,10 @@
                                         <a href="#">首页</a>
                                     </li>
                                     <li>
-                                        <a href="#about">关于我们</a>
+                                        <a href="about_us.jsp">关于我们</a>
                                     </li>
                                     <li>
-                                        <a href="#contact">联系我们</a>
+                                        <a href="contact_us.jsp">联系我们</a>
                                     </li>
                                 </ul>
                             </div>
