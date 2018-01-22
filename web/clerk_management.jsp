@@ -215,30 +215,30 @@
             <div class="col-75"></div>
         </div>
         <div class="row no-gutter">
-            <div class="col-40 text-r">
-                <input type="button" class="btn btn-primary" value="添加书" style="width:200px;"onclick="location.href='add_book.html'"></input>
+            <div class="col-70 text-r">
+                <input type="button" class="btn btn-primary" value="添加书" style="width:400px;"onclick="location.href='add_book.jsp'"></input>
             </div>
             <div class="col-20"></div>
-            <div class="col-40">
-                    <input type="button" class="btn btn-primary" value="查找用户" style="width:200px;" onclick="location.href='clerk_search_user.html'"></input>
-            </div>
         </div>
         <div class="row no-gutter">
             <div class="col-30 text-r"></div>
             <div class="col-70"></div>
         </div>
-        <div class="row no-gutter">
-            <div class="col-30 text-r"></div>
-            <div class="col-70"></div>
-        </div>
-        <div class="row no-gutter">
-                <div class="col-40 text-r">
-                        <input type="button" class="btn btn-primary" value="查看图书热度" style="width:200px;" onclick="location.href='#'"></input>
+                <div class="row no-gutter">
+                <div class="col-70 text-r">
+                        <input type="button" class="btn btn-primary" value="管理书籍" style="width:400px;" onclick="location.href='#'"></input>
                 </div>
                 <div class="col-20"></div>
-                <div class="col-40">
-                        <input type="button" class="btn btn-primary" value="收取罚款" style="width:200px;" onclick="location.href='#'"></input>
+            </div>
+        <div class="row no-gutter">
+            <div class="col-30 text-r"></div>
+            <div class="col-70"></div>
+        </div>
+        <div class="row no-gutter">
+                <div class="col-70 text-r">
+                        <input type="button" class="btn btn-primary" value="管理用户" style="width:400px;" onclick="location.href='#'"></input>
                 </div>
+                <div class="col-20"></div>
             </div>
         <div class="row no-gutter">
             <div class="col-30 text-r"></div>
