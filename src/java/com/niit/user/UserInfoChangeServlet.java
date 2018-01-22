@@ -8,20 +8,18 @@ package com.niit.user;
 import com.niit.login.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.sf.json.JSONArray;
 
 /**
  *
  * @author Bear
  */
-public class UserInfoServlet extends HttpServlet {
+public class UserInfoChangeServlet extends HttpServlet {
 
-    UserService us = new UserService();
+    private UserService us = new UserService();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,24 +34,26 @@ public class UserInfoServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-//            先判断是否已经登录，如果没有登录就跳转到登录界面
-            User user = (User) request.getSession().getAttribute("user");
-            if (user == null) {
-                request.getRequestDispatcher("/login.jsp").forward(request, response);//#######登陆界面
-            }
+            //记得先加上这行代码
+            request.setCharacterEncoding("UTF-8");
+            //1封装参数
+            User u = new User();
+            u.setUser_id(((User)request.getSession().getAttribute("user")).getUser_id());
+            u.setUser_name(request.getParameter("username"));
+            u.setUser_birth(request.getParameter("userbirth"));
+            u.setUser_gender(request.getParameter("usergender"));
+            u.setUser_phone(request.getParameter("userphone"));
+            u.setUser_email(request.getParameter("useremail"));
+//            u.setUser_role(Integer.parseInt(request.getParameter("userrole")));
+            u.setUser_address(request.getParameter("useraddress"));
+//            u.setUser_state(0);
+            //2.修改信息
+            User user = us.update(u);
+            //3.修改成功，将user保存到Session中进行存储
 
-//           获取用户的借阅消息
-            //1.根据service获得借阅记录
-            int user_id = ((User) request.getSession().getAttribute("user")).getUser_id();
-            List<Borrow_View> list = us.getallRecords(user_id);
-            //2.将记录返回到request域中
-            String json = JSONArray.fromObject(list).toString();
-            request.setAttribute("json", json);
-
-            //3.转发到userinfo.jsp
-            request.getRequestDispatcher("/userinfo.jsp").forward(request, response);
-
+            request.getSession().setAttribute("user", user);
+            //4.跳转到userinfo页面
+            request.getRequestDispatcher("/UserInfoServlet").forward(request, response);
         }
     }
 

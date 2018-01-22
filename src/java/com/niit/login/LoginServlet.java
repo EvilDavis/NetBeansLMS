@@ -19,7 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class LoginServlet extends HttpServlet {
 
-    private LoginService ls=new LoginService();
+    private LoginService ls = new LoginService();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -66,8 +67,9 @@ public class LoginServlet extends HttpServlet {
             //6.登陆成功，将user保存到Session中进行存储
             request.getSession().setAttribute("user", user);
             //7.登陆成功跳转到相应界面
-            request.getRequestDispatcher("/home.jsp").forward(request, response);
-
+            out.print("<script> alert(\"登录成功!\"); window.location.href='/NetBeansLMS/home.jsp';</script>");
+//            request.getRequestDispatcher("/home.jsp").forward(request, response);
+//            response.getWriter().print("<script> alert(\"登录成功!\"); </script>");
         }
     }
 

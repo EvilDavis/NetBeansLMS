@@ -5,6 +5,7 @@
  */
 package com.niit.user;
 
+import com.niit.login.User;
 import java.util.List;
 
 /**
@@ -12,9 +13,21 @@ import java.util.List;
  * @author Bear
  */
 public class UserService {
-    UserDao ud=new UserDao();
+
+    UserDao ud = new UserDao();
+
     List<Borrow_View> getallRecords(int user_id) {
         return ud.getAllBorrow_ViewByUser_ID(user_id);
+    }
+
+    User update(User u) {
+        User user = ud.updateUserInfo(u);
+        return user;
+    }
+
+    User changePsd(User u) {
+               User user=ud.updateUserPsd(u);
+        return user;
     }
 
 }

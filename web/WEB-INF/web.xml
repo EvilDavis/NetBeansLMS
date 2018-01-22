@@ -19,6 +19,14 @@
         <servlet-name>UserInfoServlet</servlet-name>
         <servlet-class>com.niit.user.UserInfoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserInfoChangeServlet</servlet-name>
+        <servlet-class>com.niit.user.UserInfoChangeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserChangePasswordServlet</servlet-name>
+        <servlet-class>com.niit.user.UserChangePasswordServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -34,6 +42,14 @@
     <servlet-mapping>
         <servlet-name>UserInfoServlet</servlet-name>
         <url-pattern>/UserInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserInfoChangeServlet</servlet-name>
+        <url-pattern>/UserInfoChangeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserChangePasswordServlet</servlet-name>
+        <url-pattern>/UserChangePasswordServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -8,20 +8,19 @@ package com.niit.user;
 import com.niit.login.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.sf.json.JSONArray;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author Bear
  */
-public class UserInfoServlet extends HttpServlet {
+public class UserChangePasswordServlet extends HttpServlet {
 
-    UserService us = new UserService();
+    private UserService us = new UserService();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,24 +35,22 @@ public class UserInfoServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-//            先判断是否已经登录，如果没有登录就跳转到登录界面
-            User user = (User) request.getSession().getAttribute("user");
-            if (user == null) {
-                request.getRequestDispatcher("/login.jsp").forward(request, response);//#######登陆界面
-            }
+            //记得先加上这行代码
+            request.setCharacterEncoding("UTF-8");
+//            0检验参数是否正确
+            User u1 = (User) request.getSession().getAttribute("user");
 
-//           获取用户的借阅消息
-            //1.根据service获得借阅记录
-            int user_id = ((User) request.getSession().getAttribute("user")).getUser_id();
-            List<Borrow_View> list = us.getallRecords(user_id);
-            //2.将记录返回到request域中
-            String json = JSONArray.fromObject(list).toString();
-            request.setAttribute("json", json);
 
-            //3.转发到userinfo.jsp
-            request.getRequestDispatcher("/userinfo.jsp").forward(request, response);
-
+            //1封装参数
+            User u = new User();
+            u.setUser_id(u1.getUser_id());
+            u.setUser_pwd(request.getParameter("new_password"));
+            //2.修改密码
+            User user = us.changePsd(u);
+            //3.修改成功，将user保存到Session中进行存储
+            request.getSession().setAttribute("user", user);
+            //4.
+            response.sendRedirect(request.getContextPath() + "/UserInfoServlet");
         }
     }
 

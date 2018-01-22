@@ -43,7 +43,6 @@ public class RegisterServlet extends HttpServlet {
             u.setUser_birth(request.getParameter("userbirth"));
             u.setUser_gender(request.getParameter("usergender"));
             u.setUser_phone(request.getParameter("userphone"));
-            u.setUser_phone(request.getParameter("userphone"));
             u.setUser_email(request.getParameter("useremail"));
             u.setUser_role(Integer.parseInt(request.getParameter("userrole")));
             u.setUser_address(request.getParameter("useraddress"));
@@ -58,8 +57,9 @@ public class RegisterServlet extends HttpServlet {
                 return;
             }
             //4 根据结果,跳转到对应页面
-            response.sendRedirect(request.getContextPath() + "/register_success.jsp");
-
+            out.print("<script> alert(\"注册成功，请登录!\"); window.location.href='/NetBeansLMS/login.jsp';</script>");
+//            response.getWriter().print("<script> alert(\"注册成功!\"); </script>");
+//            response.sendRedirect(request.getContextPath() + "/login.jsp");
         }
     }
 
