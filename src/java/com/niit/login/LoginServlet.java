@@ -34,7 +34,6 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
             //1.记得先加上这行代码
             request.setCharacterEncoding("UTF-8");
             //2.设置“记住我”功能
@@ -67,8 +66,8 @@ public class LoginServlet extends HttpServlet {
             //6.登陆成功，将user保存到Session中进行存储
             request.getSession().setAttribute("user", user);
             //7.登陆成功跳转到相应界面
-            out.print("<script> alert(\"登录成功!\"); window.location.href='/NetBeansLMS/home.jsp';</script>");
-//            request.getRequestDispatcher("/home.jsp").forward(request, response);
+//            out.print("<script> alert(\"登录成功!\"); window.location.href='/NetBeansLMS/home.jsp';</script>");
+            request.getRequestDispatcher("/home.jsp").forward(request, response);
 //            response.getWriter().print("<script> alert(\"登录成功!\"); </script>");
         }
     }

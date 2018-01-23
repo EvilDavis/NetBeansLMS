@@ -20,7 +20,7 @@ public class RegisterDao {
         //1.获得连接
         Connection conn = JDBCUtils.getConnection();
         //2.准备sql     
-        String sql = "insert into user(user_name,user_role,user_phone,user_pwd,user_email,user_gender,user_address,user_birth,user_state) values( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into user(user_name,user_role,user_phone,user_pwd,user_email,user_gender,user_address,user_birth,user_state,user_img) values( ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
         java.sql.PreparedStatement ps = null;
         //3.准备PreparedStatement对象
         try {
@@ -35,7 +35,7 @@ public class RegisterDao {
             ps.setString(7, u.getUser_address());
             ps.setString(8, u.getUser_birth());
             ps.setInt(9, u.getUser_state());
-
+            ps.setString(10, u.getUser_img());
             //5.执行sql
             int result = ps.executeUpdate();
             if (result != 1) {

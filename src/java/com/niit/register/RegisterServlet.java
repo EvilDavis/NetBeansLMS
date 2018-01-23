@@ -6,8 +6,12 @@
 package com.niit.register;
 
 import com.niit.login.User;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -47,6 +51,21 @@ public class RegisterServlet extends HttpServlet {
             u.setUser_role(Integer.parseInt(request.getParameter("userrole")));
             u.setUser_address(request.getParameter("useraddress"));
             u.setUser_state(0);
+            
+            //设置注册用户的默认路径
+            SimpleDateFormat format=new SimpleDateFormat("/yyyy/MM/dd/");
+            String datepath = format.format(new Date());
+            //拼接完整路径
+            String wholepath="/Images/User_Images"+datepath;
+            String storePath ="d://uploads"+wholepath;
+            File directory = new  File(storePath);
+            if(!directory.exists())
+            {
+                directory.mkdirs();
+            }
+            String fileName=UUID.randomUUID().toString();
+            u.setUser_img(wholepath+fileName);
+            
             //3 调用Service保存
             try {
                 registerService.register(u);

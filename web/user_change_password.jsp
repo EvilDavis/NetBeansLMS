@@ -131,7 +131,7 @@
                 <div class="col-20">
                     <div class="user-head-box">
                         <a style="margin-top: 0px;width: 30px;">
-                            <img class="head_img" id="user_img" url="${sessionScope.user.user_img}" />
+                            <img class="head_img" id="user_img" src="/NetBeansLMS${sessionScope.user.user_img}" />
 
                         </a>
                     </div>

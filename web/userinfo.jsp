@@ -118,7 +118,7 @@
                         <div class="breadcrumb">
                             您现在的位置是：
                             <a href="#">首页</a> &gt;
-                            <a href="/NetBeansLMS/LogoutServlet">我的空间</a> &gt;
+                            <a href="/NetBeansLMS/UserInfoServlet">我的空间</a> &gt;
                             <span style="color: #38b4e6">个人资料</span>
                         </div>
                     </div>
@@ -128,7 +128,7 @@
                 <div class="col-20">
                     <div class="user-head-box">
                         <a style="margin-top: 0px;width: 30px;">
-                            <img class="head_img" id="user_img" url="${sessionScope.user.user_img}" />
+                            <img class="head_img" id="user_img" src="/NetBeansLMS${sessionScope.user.user_img}" />
 
                         </a>
                     </div>

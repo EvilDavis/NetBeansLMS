@@ -64,7 +64,7 @@ public class UserDao {
         Connection conn = JDBCUtils.getConnection();
         //2.准备sql
 //        String sql = "UPDATE user SET user_name=?,user_birth=?,user_gender=?,user_phone=? ,user_email=?,user_address=?,user_img=? where user_id=?";  
-        String sql = "UPDATE user SET user_name=?,user_birth=?,user_gender=?,user_phone=? ,user_email=?,user_address=? where user_id=?";
+        String sql = "UPDATE user SET user_name=?,user_birth=?,user_gender=?,user_phone=? ,user_email=?,user_address=? ,user_img=? where user_id=?";
 
         java.sql.PreparedStatement ps = null;
         ResultSet rs = null;
@@ -81,8 +81,8 @@ public class UserDao {
             ps.setString(5, u.getUser_email());
             ps.setString(6, u.getUser_address());
 
-//            ps.setString(6, u.getUser_img());
-            ps.setInt(7, u.getUser_id());
+           ps.setString(7, u.getUser_img());
+            ps.setInt(8, u.getUser_id());
 
             //5.执行修改
             int executeUpdate = ps.executeUpdate();
