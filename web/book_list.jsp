@@ -219,6 +219,8 @@
                     <th scope="col">ID</th>
                     <th scope="col">ISBN</th>
                     <th scope="col">书名</th>
+                    <th scope="col">作者</th>
+                    <th scope="col">类别</th>
                     <th scope="col">状态</th>
                     <th scope="col">借书人</th>
                 </tr>
@@ -228,6 +230,8 @@
                     <th scope="row">1</th>
                     <td>978-7-02-012144-1</td>
                     <td>傲慢与偏见</td>
+                    <td>简·奥斯丁</td>
+                    <td>文学类</td>
                     <td>借出</td>
                     <td>Bear</td>
                     <td>
@@ -238,6 +242,8 @@
                     <th scope="row">2</th>
                     <td>978-7-02-012144-1</td>
                     <td>傲慢与偏见</td>
+                    <td>简·奥斯丁</td>
+                    <td>文学类</td>
                     <td>未借出</td>
                     <td></td>
                     <td>
