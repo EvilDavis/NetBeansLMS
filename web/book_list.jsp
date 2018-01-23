@@ -213,19 +213,39 @@
             <div class="col-25 text-r"></div>
             <div class="col-75"></div>
         </div>
-        <div class="row">
-            <div class="col-30 text-r"></div>
-            <div class="col-70 row">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="bookimage/傲慢与偏见.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">傲慢与偏见</h5>
-                        <p>作者</p>
-                        <a href="#" class="btn btn-primary">详细信息</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">书名</th>
+                    <th scope="col">状态</th>
+                    <th scope="col">借书人</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>978-7-02-012144-1</td>
+                    <td>傲慢与偏见</td>
+                    <td>借出</td>
+                    <td>Bear</td>
+                    <td>
+                        <button>详细信息</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>978-7-02-012144-1</td>
+                    <td>傲慢与偏见</td>
+                    <td>未借出</td>
+                    <td></td>
+                    <td>
+                        <button>详细信息</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
 
 
